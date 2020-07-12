@@ -1,0 +1,27 @@
+﻿@model IList<MVCWebSite.Models.tMember>
+ 
+@{
+    ViewBag.Title = "會員列表";
+}
+
+<h2>會員列表</h2>
+
+<table class="table">
+    <tr>
+        <td>會員編號</td>
+        <td>會員姓名</td>
+        <td>會員電話</td>
+        <td>會員薪資</td>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@item.Mem_Id</td>
+            <td>@item.Mem_Name</td>
+            <td>@item.Mem_Phone</td>
+            <td>@item.Mem_Salary</td>
+        </tr> 
+    }
+</table>
+
