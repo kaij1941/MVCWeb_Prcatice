@@ -13,7 +13,7 @@ namespace MVCWebSite.Controllers
         // GET: Home
         public ActionResult Index()
         {
-            var emps = db.tMember.OrderBy(m => m.Mem_Id).ToList();
+            var emps = db.tMember.Where(m=>m.Mem_Exist =="0").OrderBy(m => m.Mem_Id).ToList();
 
             return View(emps);
         }
@@ -46,7 +46,6 @@ namespace MVCWebSite.Controllers
             member.Mem_Name = Mem_Name;
             member.Mem_Phone = Mem_Phone;
             member.Mem_Salary = Mem_salary;
-
             db.SaveChanges();
             return RedirectToAction("Index");
         }
@@ -54,7 +53,9 @@ namespace MVCWebSite.Controllers
         {
             //var member = db.tMember.Where(m => m.Mem_Id == Mem_Id).FirstOrDefault();
             //db.tMember.Remove(member);
-            //db.SaveChanges();
+            var member = db.tMember.Where(m => m.Mem_Id == Mem_Id).FirstOrDefault();
+            member.Mem_Exist = "1";
+            db.SaveChanges();
             return RedirectToAction("Index");
         }
 

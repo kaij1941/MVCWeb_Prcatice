@@ -18,5 +18,6 @@ namespace MVCWebSite.Models
         public string Mem_Name { get; set; }
         public string Mem_Phone { get; set; }
         public Nullable<int> Mem_Salary { get; set; }
+        public string Mem_Exist { get; set; }
     }
 }
