@@ -1,0 +1,21 @@
+﻿@model MVCWebSite.Models.tMember
+@{
+    ViewBag.Title = "會員修改";
+}
+
+<h2>會員修改</h2>
+
+<form action="@Url.Action("Edit")" method="post">
+    <input type="hidden" name="Mem_Id" value="@Model.Mem_Id" />
+    <p>
+        員工姓名 <input type="text" name="Mem_Name" value="@Model.Mem_Name" class="form-control" />
+    </p>
+    <p>
+        員工電話 <input type="text" name="Mem_Phone" value="@Model.Mem_Phone" class="form-control" maxlength="10" />
+    </p>
+    <p>
+        員工薪資 <input type="number" name="Mem_Salary" value="@Model.Mem_Salary" class="form-control"
+                    max="100000" min="23000" />
+    </p>
+    <input type="submit" value="修改" class="btn btn-success" />
+</form>

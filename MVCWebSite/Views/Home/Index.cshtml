@@ -12,16 +12,22 @@
         <td>會員姓名</td>
         <td>會員電話</td>
         <td>會員薪資</td>
+        <td></td>
     </tr>
 
     @foreach (var item in Model)
     {
+
         <tr>
             <td>@item.Mem_Id</td>
             <td>@item.Mem_Name</td>
             <td>@item.Mem_Phone</td>
             <td>@item.Mem_Salary</td>
+            <td>
+                <a href="@Url.Action("Edit")?Mem_Id=@item.Mem_Id"class="btn btn-info">修改</a>
+                <a href="@Url.Action("Delete")?Mem_Id=@item.Mem_Id" 
+                   onclick="return confirm('確定要刪除嗎?');" class="btn btn-danger">刪除</a>
+            </td>    
         </tr> 
     }
 </table>
-
