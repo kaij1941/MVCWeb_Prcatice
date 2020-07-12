@@ -1,0 +1,21 @@
+﻿
+@{
+    ViewBag.Title = "會員新增";
+}
+
+<h2>會員新增</h2>
+
+<form action="@Url.Action("Create")" method="post">
+    <p>
+        員工姓名 <input type="text" name="Mem_Name" class="form-control" />
+    </p>
+    <p>
+        員工電話 <input type="text" name="Mem_Phone" class="form-control" maxlength="10"/>
+    </p>
+    <p>
+        員工薪資 <input type="number" name="Mem_Salary" class="form-control" 
+                    max="100000" min="23000"/>
+    </p>
+    <input type="submit"  value="新增" class="btn btn-success" />
+</form>
+

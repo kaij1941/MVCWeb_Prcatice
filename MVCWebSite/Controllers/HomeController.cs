@@ -17,5 +17,21 @@ namespace MVCWebSite.Controllers
 
             return View(emps);
         }
+
+        public ActionResult Create() 
+        {
+            return View();
+        }
+        [HttpPost]
+        public ActionResult Create(string Mem_Name,string Mem_Phone,int Mem_salary) 
+        {
+            tMember member = new tMember();
+            member.Mem_Name = Mem_Name;
+            member.Mem_Phone = Mem_Phone;
+            member.Mem_Salary = Mem_salary;
+            db.tMember.Add(member);
+            db.SaveChanges();
+            return RedirectToAction("Index");
+        }
     }
 }
