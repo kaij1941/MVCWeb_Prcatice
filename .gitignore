@@ -109,3 +109,5 @@ MVCWebSite/packages/EntityFramework.zh-Hant.6.2.0/lib/net45/zh-Hant/EntityFramew
 MVCWebSite/.vs/MVCWebSite/v16/.suo
 MVCWebSite/obj/Debug/MVCWebSite.csprojAssemblyReference.cache
 MVCWebSite/obj/Debug/DesignTimeResolveAssemblyReferencesInput.cache
+MVCWebSite/App_Data/dbMember.mdf
+MVCWebSite/App_Data/dbMember_log.ldf
