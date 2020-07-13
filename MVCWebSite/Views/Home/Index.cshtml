@@ -1,11 +1,26 @@
 ﻿@model IList<MVCWebSite.Models.tMember>
- 
+
 @{
     ViewBag.Title = "會員列表";
 }
 
 <h2>會員列表</h2>
-
+<form action="@Url.Action("Index")" method="post">
+    <div class="form-inline">
+        會員編號 <input type="text" name="Mem_Id" class="form-control" />
+        會員姓名 <input type="text" name="Mem_Name" class="form-control" />
+        會員電話 <input type="text" name="Mem_Phone" class="form-control" maxlength="10" />
+        <p></p>
+    </div>
+    <div class="form-inline">
+        會員薪資 <input type="number" name="Mem_SalaryMin" class="form-control"
+                    max="100000" min="23000" />  到
+                <input type="number" name="Mem_SalaryMax" class="form-control"
+                       max="100000" min="23000" />
+        <input type="submit" value="查詢" class="btn btn-success" />
+    </div>
+</form>
+<hr>
 <table class="table">
     <tr>
         <td>會員編號</td>
@@ -18,15 +33,18 @@
     @foreach (var item in Model)
     {
         <tr>
+        </tr>
+        <tr>
             <td>@item.Mem_Id</td>
             <td>@item.Mem_Name</td>
             <td>@item.Mem_Phone</td>
             <td>@item.Mem_Salary</td>
             <td>
-                <a href="@Url.Action("Edit")?Mem_Id=@item.Mem_Id"class="btn btn-info">修改</a>
-                <a href="@Url.Action("Delete")?Mem_Id=@item.Mem_Id" 
+                <a href="@Url.Action("Edit")?Mem_Id=@item.Mem_Id" class="btn btn-info">修改</a>
+                <a href="@Url.Action("Delete")?Mem_Id=@item.Mem_Id"
                    onclick="return confirm('確定要刪除嗎?');" class="btn btn-danger">刪除</a>
-            </td>    
-        </tr> 
+            </td>
+        </tr>
+
     }
 </table>
