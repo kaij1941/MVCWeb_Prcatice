@@ -155,7 +155,7 @@
       <DependentUpon>dbMemberModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Service\ValidService.cs" />
+    <Compile Include="Service\RandomServer.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\web.config" />

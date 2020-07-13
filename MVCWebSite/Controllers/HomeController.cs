@@ -93,7 +93,8 @@ namespace MVCWebSite.Controllers
             string filename = "";
             if (file != null && file.ContentLength > 0) 
             {
-                filename = Path.GetFileName(file.FileName);
+                //filename = Path.GetFileName(file.FileName);
+                filename = "Pic"+DateTime.Now.Millisecond.ToString()+ RandomServer.RandomWord(5);
                 string path = string.Format("{0}/{1}", Server.MapPath("~/images"), filename);
                 file.SaveAs(path);
             }
