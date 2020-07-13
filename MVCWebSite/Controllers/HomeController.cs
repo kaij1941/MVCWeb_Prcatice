@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity.Core.Metadata.Edm;
+using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -78,6 +80,39 @@ namespace MVCWebSite.Controllers
             member.Mem_Exist = "1";
             db.SaveChanges();
             return RedirectToAction("Index");
+        }
+        public ActionResult Upload() 
+        {
+
+            return View();
+        }
+        [HttpPost]
+        public ActionResult Upload(HttpPostedFileBase file) 
+        {
+
+            string filename = "";
+            if (file != null && file.ContentLength > 0) 
+            {
+                filename = Path.GetFileName(file.FileName);
+                string path = string.Format("{0}/{1}", Server.MapPath("~/images"), filename);
+                file.SaveAs(path);
+            }
+            return RedirectToAction("ShowPhotos");
+        }
+        public string ShowPhotos() 
+        {
+            string show = "";
+            DirectoryInfo dir = new DirectoryInfo(Server.MapPath("~/images"));
+            FileInfo[] fileInfos = dir.GetFiles();
+            foreach (FileInfo item in fileInfos)
+            {
+                show += string.Format
+                    ("<img src= '../images/{0}' width='160' height ='120'> "
+                    , item.Name);
+            }
+            show += "<hr>";
+            show += "<a href= 'Upload'>返回</a>";
+            return show;
         }
 
     }
