@@ -5,6 +5,16 @@
     <!-- SSDL content -->
     <edmx:StorageModels>
     <Schema Namespace="dbMemberModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="tManager">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Account" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Pwd" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Level" Type="int" Nullable="false" />
+        </EntityType>
         <EntityType Name="tMember">
           <Key>
             <PropertyRef Name="Mem_Id" />
@@ -16,6 +26,7 @@
           <Property Name="Mem_Exist" Type="nvarchar" MaxLength="1" />
         </EntityType>
         <EntityContainer Name="dbMemberModelStoreContainer">
+          <EntitySet Name="tManager" EntityType="Self.tManager" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tMember" EntityType="Self.tMember" Schema="dbo" store:Type="Tables" />
         </EntityContainer>
       </Schema></edmx:StorageModels>
@@ -34,7 +45,18 @@
         </EntityType>
         <EntityContainer Name="dbMemberEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="tMember" EntityType="Self.tMember" />
+          <EntitySet Name="tManager" EntityType="dbMemberModel.tManager" />
         </EntityContainer>
+        <EntityType Name="tManager">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Account" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Pwd" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Level" Type="Int32" Nullable="false" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -49,6 +71,17 @@
                 <ScalarProperty Name="Mem_Name" ColumnName="Mem_Name" />
                 <ScalarProperty Name="Mem_Phone" ColumnName="Mem_Phone" />
                 <ScalarProperty Name="Mem_Salary" ColumnName="Mem_Salary" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tManager">
+            <EntityTypeMapping TypeName="dbMemberModel.tManager">
+              <MappingFragment StoreEntitySet="tManager">
+                <ScalarProperty Name="Level" ColumnName="Level" />
+                <ScalarProperty Name="Pwd" ColumnName="Pwd" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Account" ColumnName="Account" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

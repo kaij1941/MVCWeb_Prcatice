@@ -26,5 +26,6 @@ namespace MVCWebSite.Models
         }
     
         public virtual DbSet<tMember> tMember { get; set; }
+        public virtual DbSet<tManager> tManager { get; set; }
     }
 }
